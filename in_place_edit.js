@@ -11,9 +11,10 @@
 *   are documented inline below
 *
 */
-InPlaceEdit = function(container) {
-  var _container = container;
-  var options = [
+var InPlaceEdit = function(container) {
+  var data,
+      _container = container,
+      options = [
                  'add_class_on_blur',
                  'add_class_on_focus',
                  'add_class_on_submit',
@@ -33,16 +34,18 @@ InPlaceEdit = function(container) {
                  'toggle_label_on_click',
                  'toggle_label_on_enter'
                 ];
-  var data = $(_container).find('form').serializeArray();
-
-  $(document).ready(init);
 
   function init() {
+    setObjects();
     setListeners();
   }
 
   function setListeners() {
     _wireOptions($(_container));
+  }
+
+  function setObjects() {
+    data = $(_container).find('form').serializeArray();
   }
 
   /*
@@ -380,6 +383,8 @@ InPlaceEdit = function(container) {
       }
     });
   }
+
+  init();
 
   return {};
 }
