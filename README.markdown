@@ -38,7 +38,7 @@ be added by supplying the data-add_class_on_focus attribute.
         
 # View the Demo
 
-[View the demo](http://mrfrosti.com/in_place_edit.demo.html)
+[View the demo](http://mrfrosti.com/in_place_edit_demo.html)
 
 # Options
 
@@ -49,31 +49,31 @@ option. Further examples are at the bottom.
 
 ### Submit control
 
-  * [Submit on blur (one field)][1]
-  * [Submit on blur (multiple fields)][2]
-  * [Submit on click][3]
-  * [Submit on enter][4]
-  * [Submit on autocomplete select][5]
+  * Submit on blur (one field)
+  * Submit on blur (multiple fields)
+  * Submit on click
+  * Submit on enter
+  * Submit on autocomplete select
 
 ### Class manipulation
 
-  * [Add class on focus][6]
-  * [Remove class on focus][7]
-  * [Add class on blur][8]
-  * [Remove class on blur][9]
-  * [Add class on submit][10]
+  * Add class on focus
+  * Remove class on focus
+  * Add class on blur
+  * Remove class on blur
+  * Add class on submit
 
 ### Label display
 
-  * [Toggle label on click][11]
-  * [Toggle label on blur][12]
-  * [Toggle label on enter][13]
-  * [Focus respective inputs][14]
+  * Toggle label on click
+  * Toggle label on blur
+  * Toggle label on enter
+  * Focus respective inputs
 
 ### Other controls
 
-  * [Blur on submit][15]
-  * [Blur on autocomplete select][16]
-  * [Disable inputs on submit][17]
-  * [Toggle actions on mouseover][18]
+  * Blur on submit
+  * Blur on autocomplete select
+  * Disable inputs on submit
+  * Toggle actions on mouseover
 
