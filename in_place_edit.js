@@ -14,7 +14,8 @@
 
 (function($){
   $.fn.inPlaceEdit = function(options) {
-    var _methods = {},
+    var _curMethod,
+        _methods = {},
         _options,
         _toggleClass = function(){},
         $this = $(this),
@@ -52,9 +53,12 @@
     _toggleClass = function(className) {
       $inputs.on({
         blur: function() {
+          console.log(this);
           $(this).toggleClass(className);
         },
         focus: function() {
+          console.log(this);
+          console.log(className);
           $(this).toggleClass(className);
         }
       });
@@ -104,9 +108,11 @@
      *   Suitable for an in_place_edit containing only one :input element
      */
     _methods.submitOnBlurNoDelay = function() {
-      var currentData = $form.serializeArray();
-      formData = (formData === currentData) ? formData : currentData;
-      $form.trigger('submit');
+      $form.on('blur', function() {
+        var currentData = $form.serializeArray();
+        formData = (formData === currentData) ? formData : currentData;
+        $form.trigger('submit');
+      });
     };
 
     /**
@@ -166,7 +172,7 @@
      * blured :input field. Remove data('add_class_on_blur') class back on blur
      */
     _methods.addClassOnBlur = function() {
-      _toggleClass(_options.addClassOnBlur);
+        _toggleClass(_options.addClassOnBlur);
     };
 
     /**
@@ -185,7 +191,7 @@
      */
     _methods.toggleLabelOnClick = function() {
       // TODO: fix the specificity of this
-      $this.find('.display_label *:not(.no_toggle)').on('click', function(evt){
+      $this.find('.display_label').on('click', function(evt) {
         if ( !$(evt.target).hasClass('no_toggle') ) {
           $(this).parents('.display_label').hide();
           $form.show();
@@ -344,18 +350,24 @@
 
     // Loop through the given plugin options and bind them
     // appropriately.
-    if (_options.actions.length === 0) {
-      _options.actions = $form.data('inPlaceData').split(' ');
+    if (_options.actions.length === 0 && $this.data('inPlaceData')) {
+      _options.actions = $this.data('inPlaceData').split(' ');
+      for (i = 0, j = _options.actions.length; i < j; i += 1) {
+        _curMethod = _options.actions[i];
+        _options[_curMethod] =
+          ($this.data(_curMethod)) ? $this.data(_curMethod) : true;
+      }
     }
     for (i = 0, j = _options.actions.length; i < j; i += 1) {
+      _curMethod = _options.actions[i];
       // The option is either null or false by default. If it isn't either
       // of those, then we will call the function, provided it is an allowed
       // option.
-      if (_options[i]) {
-        if (_methods.hasOwnProperty(_options[i])) {
+      if (_options[_curMethod]) {
+        if ( _methods.hasOwnProperty(_curMethod) ) {
           // Note: the 'this' being passed to the function is the in_place_edit
           // container
-          _methods[_options[i]].call(this);
+          _methods[_curMethod].call(this);
         } else {
           throw new Error('Option undefined.');
         }
