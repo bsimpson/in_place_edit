@@ -344,6 +344,9 @@
 
     // Loop through the given plugin options and bind them
     // appropriately.
+    if (_options.actions.length === 0) {
+      _options.actions = $form.data('inPlaceData').split(' ');
+    }
     for (i = 0, j = _options.actions.length; i < j; i += 1) {
       // The option is either null or false by default. If it isn't either
       // of those, then we will call the function, provided it is an allowed
