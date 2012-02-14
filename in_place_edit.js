@@ -53,12 +53,9 @@
     _toggleClass = function(className) {
       $inputs.on({
         blur: function() {
-          console.log(this);
           $(this).toggleClass(className);
         },
         focus: function() {
-          console.log(this);
-          console.log(className);
           $(this).toggleClass(className);
         }
       });
@@ -172,7 +169,10 @@
      * blured :input field. Remove data('add_class_on_blur') class back on blur
      */
     _methods.addClassOnBlur = function() {
-        _toggleClass(_options.addClassOnBlur);
+        var className = _options.addClassOnBlur;
+        $inputs.on('blur', function() {
+            $(this).toggleClass(className);
+        });
     };
 
     /**
@@ -180,7 +180,10 @@
      * blurred :input field. Add data('remove_class_on_blur') class back on blur
      */
     _methods.removeClassOnBlur = function() {
-      _toggleClass(_options.removeClassOnBlur);
+      var className = _options.removeClassOnBlur;
+      $inputs.on('blur', function() {
+        $(this).toggleClass(className);
+      });
     };
 
     /**
@@ -190,7 +193,6 @@
      * from this event
      */
     _methods.toggleLabelOnClick = function() {
-      // TODO: fix the specificity of this
       $this.find('.display_label').on('click', function(evt) {
         if ( !$(evt.target).hasClass('no_toggle') ) {
           $(this).parents('.display_label').hide();
@@ -303,7 +305,7 @@
      */
     _methods.blurOnAutocompleteSelect = function() {
       $this.find('.ui-autocomplete-input').on('autocompleteselect', function() {
-        $this.blur();
+        $(this).blur();
       });
     };
 
