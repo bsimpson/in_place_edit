@@ -13,7 +13,7 @@
 */
 
 (function($){
-  $.fn.inPlaceEdit = function(options) {
+  var inPlaceEdit = function(options) {
     var _curMethod,
         _methods = {},
         _options,
@@ -68,7 +68,7 @@
      *   Suitable for an in_place_edit containing multiple :input elements
      */
     _methods.submitOnBlur = function() {
-      $form.find(':input').on({
+      $inputs.on({
         blur: function() {
           var blurFunction = function() {
             var currentData = $form.serializeArray();
@@ -105,7 +105,7 @@
      *   Suitable for an in_place_edit containing only one :input element
      */
     _methods.submitOnBlurNoDelay = function() {
-      $form.on('blur', function() {
+      $inputs.on('blur', function() {
         var currentData = $form.serializeArray();
         formData = (formData === currentData) ? formData : currentData;
         $form.trigger('submit');
@@ -274,7 +274,7 @@
      */
     _methods.addClassOnSubmit = function() {
       var className = _options.addClassOnSubmit;
-      $form.on({
+      $inputs.on({
         blur: function() {
           $inputs.addClass(className);
         },
@@ -295,7 +295,7 @@
      * @description Simulate tabbing away from a field on submit, blur, or enter
      */
     _methods.blurOnSubmit = function() {
-      $form.bind('submit', function() {
+      $form.on('submit', function() {
         $inputs.blur();
       });
     };
@@ -375,7 +375,12 @@
         }
       }
     }
+  };
 
-    return this;
+  $.fn.inPlaceEdit = function(options) {
+    // 'this' is a jQuery object in jQuery plugins
+    return this.each(function() {
+      inPlaceEdit.call(this, options);
+    });
   };
 }(jQuery));
