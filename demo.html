@@ -7,12 +7,16 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
-    <script type="text/javascript" src="https://raw.github.com/bsimpson/in_place_edit/master/in_place_edit.js"></script>
+    <!--script type="text/javascript" src="https://raw.github.com/bsimpson/in_place_edit/master/in_place_edit.js"></script-->
+    <script type="text/javascript" src="in_place_edit.js"></script>
     <script type="text/javascript">
       $(function() {
-        $('.in_place_edit').each(function() {
-          InPlaceEdit(this);
+        $('.demo_form').bind('submit', function(evt) {
+          evt.preventDefault();
+          alert('Form has been submitted');
         });
+
+        $('.in_place_edit').inPlaceEdit();
 
         // Autocomplete for demo
         $('.autocomplete').autocomplete({ source:
@@ -41,11 +45,6 @@
           "Scheme"
           ]
         });
-
-        $('.demo_form').bind('submit', function(evt) {
-          evt.preventDefault();
-          alert('Form has been submitted');
-        });
       });
     </script>
 
@@ -61,11 +60,11 @@
       Why another in place edit library? This was born out of a need for extremely specific interactions that varied in different parts of the application. There was no way a blanket set of logic would match every interaction the client wanted.
     </p>
     <p>
-      This library is built with customization in mind. When you define your in place edit form, you can pass one or more options to the data-in_place_edit attribute to get the desired effect. The actions are specific and let you choose exactly how you want each form to operate.
+      This library is built with customization in mind. When you define your in place edit form, you can pass one or more options to the data-in-place-edit attribute to get the desired effect. The actions are specific and let you choose exactly how you want each form to operate.
     </p>
 
     <pre>
-      &lt;div class="in_place_edit" data-in_place_data="submit_on_blur"&gt;
+      &lt;div class="in_place_edit" data-in-place-data="submitOnBlur"&gt;
         &lt;form action="#" method="post"&gt;
           &lt;input type="text" name="foo" value="foo" /&gt;
         &lt;/form&gt;
@@ -73,15 +72,15 @@
     </pre>
 
     <p>
-      We wrap our form inside of a container named in_place_edit. This is the CSS selector we pass to InPlaceEdit() when we want to initialize. Options are placed inside of data-in_place_data on the same object. These options are then wired up to the form via UJS.
+      We wrap our form inside of a container named in_place_edit. This is the CSS selector we pass to jQuery when we call $.inPlaceEdit(). Options are placed inside of data-in-place-data on the same object (or via an object passed to the jQuery plugin). These options are then wired up to the form via UJS.
     </p>
 
     <p>
-      Some actions require further options to be specified, as is the case with 'Add class on focus'. In this action, we need to specify a value for the class to be added by supplying the data-add_class_on_focus attribute.
+      Some actions require further options to be specified, as is the case with 'Add class on focus'. In this action, we need to specify a value for the class to be added by supplying the data-add-class-on-focus attribute.
     </p>
 
     <pre>
-      &lt;div class="in_place_edit" data-in_place_data="add_class_on_focus" data-add_class_on_focus="red_border"&gt;
+      &lt;div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_border"&gt;
         &lt;form action="#" method="post"&gt;
           &lt;input type="text" name="foo" value="foo" /&gt;
         &lt;/form&gt;
@@ -131,7 +130,7 @@
     <p>
       Submitting a form after a field loses focus is the basic functionality of edit in place.
     <p>
-    <div class="in_place_edit" data-in_place_data="submit_on_blur_no_delay">
+    <div class="in_place_edit" data-in-place-data="submitOnBlurNoDelay">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
         <span class="hint">Note: The value must change for the form to submit</span>
@@ -141,7 +140,7 @@
     <p>
       Submitting the form the instant focus is lost may be great if you only have one form field. What happens if you have more than one field in the same form? You probably want to submit them after the user moves on from either field. This is where submitting with a delay an help. If no activity is detected in any fields for longer than 1 second, the form submits.
     </p>
-    <div class="in_place_edit" data-in_place_data="submit_on_blur">
+    <div class="in_place_edit" data-in-place-data="submitOnBlur">
       <form action="#" method="post" class="demo_form">
         <div>Field 1</div>
         <input type="text" name="foo" value="foo" />
@@ -154,7 +153,7 @@
     <p>
       Suitable for a form containing check boxes
     </p>
-    <div class="in_place_edit" data-in_place_data="submit_on_click">
+    <div class="in_place_edit" data-in-place-data="submitOnClick">
       <form action="#" method="post" class="demo_form">
         <input type="checkbox" name="foo" value="foo" />
       </form>
@@ -163,7 +162,7 @@
     <p>
       The default action of pressing enter while the focus is in a form is caught with this library. If you want to re-enable this functionality, add this method
     </p>
-    <div class="in_place_edit" data-in_place_data="submit_on_enter">
+    <div class="in_place_edit" data-in-place-data="submitOnEnter">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
         <span class="hint">Note: The value must change for the form to submit</span>
@@ -173,7 +172,7 @@
     <p>
       When a field is bound to the <a href="http://jqueryui.com/demos/autocomplete/">jQuery autocomplete UI</a> functionality, a user can select from a list of items. This option will signal to submit the form when an autocomplete item is chosen.
     </p>
-    <div class="in_place_edit" data-in_place_data="submit_on_autocomplete_select">
+    <div class="in_place_edit" data-in-place-data="submitOnAutocompleteSelect">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" class="autocomplete" />
       </form>
@@ -184,10 +183,10 @@
     </p>
     <h3>Options</h3>
     <dl>
-      <dt>data-add_class_on_focus</dt>
+      <dt>data-add-class-on-focus</dt>
       <dd>The class to add</dd>
     </dl>
-    <div class="in_place_edit" data-in_place_data="add_class_on_focus" data-add_class_on_focus="red_border">
+    <div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_border">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -198,10 +197,10 @@
     </p>
     <h3>Options</h3>
     <dl>
-      <dt>data-remove_class_on_focus</dt>
+      <dt>data-remove-class-on-focus</dt>
       <dd>The class to remove</dd>
     </dl>
-    <div class="in_place_edit" data-in_place_data="remove_class_on_focus" data-remove_class_on_focus="red_border">
+    <div class="in_place_edit" data-in-place-data="removeClassOnFocus" data-remove-class-on-focus="red_border">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" class="red_border" />
       </form>
@@ -212,10 +211,10 @@
     </p>
     <h3>Options</h3>
     <dl>
-      <dt>data-add_class_on_blur</dt>
+      <dt>data-add-class-on-blur</dt>
       <dd>The class to add</dd>
     </dl>
-    <div class="in_place_edit" data-in_place_data="add_class_on_blur" data-add_class_on_blur="red_border">
+    <div class="in_place_edit" data-in-place-data="addClassOnBlur" data-add-class-on-blur="red_border">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -226,10 +225,10 @@
     </p>
     <h3>Options</h3>
     <dl>
-      <dt>data-remove_class_on_blur</dt>
+      <dt>data-remove-class-on-blur</dt>
       <dd>The class to remove</dd>
     </dl>
-    <div class="in_place_edit" data-in_place_data="remove_class_on_blur" data-remove_class_on_blur="red_border">
+    <div class="in_place_edit" data-in-place-data="removeClassOnBlur" data-remove-class-on-blur="red_border">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" class="red_border" />
       </form>
@@ -238,7 +237,7 @@
     <p>
       When a display label is clicked, switch to an alternate view containing the form. Requires the label element to have the class display_label. Elements with a class of .no_toggle will be excluded from this event.
     </p>
-    <div class="in_place_edit" data-in_place_data="toggle_label_on_click">
+    <div class="in_place_edit" data-in-place-data="toggleLabelOnClick">
       <form action="#" method="post" class="demo_form" style="display:none">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -250,7 +249,7 @@
     <p>
       Inverse of 'Toggle Label On Click' - returns to display label when form elements blur for longer than 1s. Requires the label element to have the class 'display_label'
     </p>
-    <div class="in_place_edit" data-in_place_data="toggle_label_on_blur">
+    <div class="in_place_edit" data-in-place-data="toggleLabelOnBlur">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -260,7 +259,7 @@
     <p>
       Similar to 'Toggle Label On Blur', watching for the enter key to be pressed in a field instead
     </p>
-    <div class="in_place_edit" data-in_place_data="toggle_label_on_enter">
+    <div class="in_place_edit" data-in-place-data="toggleLabelOnEnter">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -268,14 +267,14 @@
     </div>
     <h2><a name="focus_respective_inputs">Focus Respective Inputs</a></h2>
     <p>
-      Specify an element to gain the focus on the form when a label is clicked. This element is defined by the data-in_place_focus_element value on the label element. If no element is specified, then the first element, or the element with class .initial_focus is focused.
+      Specify an element to gain the focus on the form when a label is clicked. This element is defined by the data-in-place-focus-element value on the label element. If no element is specified, then the first element, or the element with class .initial_focus is focused.
     </p>
     <h3>Options</h3>
     <dl>
-      <dt>data-in_place_focus_element</dt>
+      <dt>data-in-place-focus-element</dt>
       <dd>The CSS selector of the input element to focus on when clicked</dd>
     </dl>
-    <div class="in_place_edit" data-in_place_data="focus_respective_inputs">
+    <div class="in_place_edit" data-in-place-data="focusRespectiveInputs">
       <form action="#" method="post" class="demo_form">
         <p>
           <label for="first">First name</label>
@@ -293,9 +292,9 @@
       <div class="display_label">
         <span>Click different parts of my name:</span>
         <span>Mr.</span>
-        <span data-in_place_focus_element="#first">Benjamin</span>
-        <span data-in_place_focus_element="#middle">Lee</span>
-        <span data-in_place_focus_element="#last">Simpson</span>
+        <span data-in-place-focus-element="#first">Benjamin</span>
+        <span data-in-place-focus-element="#middle">Lee</span>
+        <span data-in-place-focus-element="#last">Simpson</span>
       </div>
     </div>
     <h2><a name="add_class_on_submit">Add Class on Submit</a></h2>
@@ -304,10 +303,10 @@
     </p>
     <h3>Options</h3>
     <dl>
-      <dt>data-add_class_on_submit</dt>
+      <dt>data-add-class-on-submit</dt>
       <dd>The class to add</dd>
     </dl>
-    <div class="in_place_edit" data-in_place_data="add_class_on_submit" data-add_class_on_submit="red_border">
+    <div class="in_place_edit" data-in-place-data="addClassOnSubmit" data-add-class-on-submit="red_border">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -316,7 +315,7 @@
     <p>
       Simulate tabbing away from a field on submit, blur, or enter
     </p>
-    <div class="in_place_edit" data-in_place_data="blur_on_submit">
+    <div class="in_place_edit" data-in-place-data="blurOnSubmit">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -325,7 +324,7 @@
     <p>
       When autocompleteselect fires, also fire a blur event
     </p>
-    <div class="in_place_edit" data-in_place_data="blur_on_autocomplete_select">
+    <div class="in_place_edit" data-in-place-data="blurOnAutocompleteSelect">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" class="autocomplete" />
       </form>
@@ -334,7 +333,7 @@
     <p>
       Disable all input fields when submit is fired
     </p>
-    <div class="in_place_edit" data-in_place_data="disable_inputs_on_submit">
+    <div class="in_place_edit" data-in-place-data="disableInputsOnSubmit">
       <form action="#" method="post" class="demo_form" id="remote">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -343,7 +342,7 @@
     <p>
       Toggle a DOM element with class "display_label" on mouseover/out
     </p>
-    <div class="in_place_edit" data-in_place_data="toggle_actions_on_mouseover">
+    <div class="in_place_edit" data-in-place-data="toggleActionsOnMouseover">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -362,7 +361,7 @@
 
     <p>Create a basic in place edit label that submits on blur, or enter</p>
     <div id="demo_1">
-      <div class="in_place_edit" data-in_place_data="submit_on_blur submit_on_enter add_class_on_focus" data-add_class_on_focus="red_border">
+      <div class="in_place_edit" data-in-place-data="submitOnBlur submitOnEnter addClassOnFocus" data-add-class-on-focus="red_border">
         <form action="#" method="post" class="demo_form">
           <div>Field 1</div>
           <input type="text" name="foo" value="foo" />
@@ -373,23 +372,23 @@
 
     <p>create a display label with multiple clickable areas</p>
     <div id="demo_2">
-      <div class="in_place_edit" data-in_place_data="submit_on_enter submit_on_blur blur_on_submit toggle_label_on_blur toggle_label_on_enter toggle_label_on_click focus_respective_inputs">
+      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit toggleLabelOnBlur toggleLabelOnEnter toggleLabelOnClick focusRespectiveInputs">
         <form action="#" method="post" class="demo_form" style="display: none">
           <input type="text" name="first" value="Benjamin" id="demo_2_first" />
           <input type="text" name="middle" value="Lee" id="demo_2_middle" />
           <input type="text" name="last" value="Simpson" id="demo_2_last" />
         </form>
         <div class="display_label">
-          <span data-in_place_focus_element="#demo_2_first">Benjamin</span>
-          <span data-in_place_focus_element="#demo_2_middle">Lee</span>
-          <span data-in_place_focus_element="#demo_2_last">Simpson</span>
+          <span data-in-place-focus-element="#demo_2_first">Benjamin</span>
+          <span data-in-place-focus-element="#demo_2_middle">Lee</span>
+          <span data-in-place-focus-element="#demo_2_last">Simpson</span>
         </div>
       </div>
       <script type="text/javascript">
         $(function() {
           $(['first','middle','last']).each(function(_, x) {
             $('#demo_2_' + x, '#demo_2').bind('blur', function() {
-              $('span[data-in_place_focus_element="#demo_2_' + x + '"]').html($(this).val());
+              $('span[data-in-place-focus-element="#demo_2_' + x + '"]').html($(this).val());
             });
           });
         });
@@ -397,14 +396,14 @@
 
     <p>edit an active hyperlink</p>
     <div id="demo_3">
-      <div class="in_place_edit" data-in_place_data="submit_on_enter submit_on_blur blur_on_submit toggle_label_on_enter toggle_label_on_blur toggle_actions_on_mouseover toggle_label_on_click focus_respective_inputs">
+      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit toggleLabelOnEnter toggleLabelOnBlur toggleActionsOnMouseover toggleLabelOnClick focusRespectiveInputs">
         <form action="#" method="post" class="demo_form" style="display: none">
           <input type="text" name="link" value="http://www.reddit.com" id="demo_3_link" />
         </form>
         <div class="display_label">
           <a href="http://www.reddit.com">http://www.reddit.com</a>
           <span class="controls" style="display: none">
-            <span data-in_place_focus_element="#demo_3_link">Edit</span>
+            <span data-in-place-focus-element="#demo_3_link">Edit</span>
           </span>
         </div>
       </div>

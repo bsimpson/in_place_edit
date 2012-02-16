@@ -6,36 +6,36 @@ was no way a blanket set of logic would match every interaction the client
 wanted.
 
 This library is built with customization in mind. When you define your in
-place edit form, you can pass one or more options to the data-in_place_edit
+place edit form, you can pass one or more options to the data-in-place-edit
 attribute to get the desired effect. The actions are specific and let you
 choose exactly how you want each form to operate.
 
-    
-    
-          <div class="in_place_edit" data-in_place_data="submit_on_blur">
+
+
+          <div class="in_place_edit" data-in-place-data="submitOnBlur">
             <form action="#" method="post">
               <input type="text" name="foo" value="foo" />
             </form>
           </div>
-        
+
 
 We wrap our form inside of a container named in_place_edit. This is the CSS
-selector we pass to InPlaceEdit() when we want to initialize. Options are
-placed inside of data-in_place_data on the same object. These options are then
+selector we pass to jQuery when calling $.inPlaceEdit(). Options are
+placed inside of data-in-place-data on the same object. These options are then
 wired up to the form via UJS.
 
 Some actions require further options to be specified, as is the case with 'Add
 class on focus'. In this action, we need to specify a value for the class to
-be added by supplying the data-add_class_on_focus attribute.
+be added by supplying the data-add-class-on-focus attribute.
 
-    
-    
-          <div class="in_place_edit" data-in_place_data="add_class_on_focus" data-add_class_on_focus="red_border">
+
+
+          <div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_border">
             <form action="#" method="post">
               <input type="text" name="foo" value="foo" />
             </form>
           </div>
-        
+
 # View the Demo
 
 [View the demo](http://mrfrosti.com/in_place_edit_demo.html)
