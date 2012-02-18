@@ -17,7 +17,6 @@
     var _curMethod,
         _methods = {},
         _options,
-        _toggleClass = function(){},
         $this = $(this),
         $form = $(this).find('form').filter(':first'),
         $inputs = $form.find(':input'),
@@ -48,18 +47,6 @@
       };
     _options = $.extend(_options, options);
     formData = $form.serializeArray();
-
-    // A helper function to prevent writing the same thing many times
-    _toggleClass = function(className) {
-      $inputs.on({
-        blur: function() {
-          $(this).toggleClass(className);
-        },
-        focus: function() {
-          $(this).toggleClass(className);
-        }
-      });
-    };
 
     // Define the methods for our plugin
 
@@ -152,7 +139,11 @@
      * back on blur.
      */
     _methods.addClassOnFocus = function() {
-      _toggleClass(_options.addClassOnFocus);
+      $inputs.on({
+        focus: function() {
+          $(this).addClass(_options.addClassOnFocus);
+        }
+      });
     };
 
     /**
@@ -161,7 +152,11 @@
      * back on blur
      */
     _methods.removeClassOnFocus = function() {
-      _toggleClass(_options.removeClassOnFocus);
+      $inputs.on({
+        focus: function() {
+          $(this).removeClass(_options.removeClassOnFocus);
+        }
+      });
     };
 
     /**
@@ -169,10 +164,11 @@
      * blured :input field. Remove data('add_class_on_blur') class back on blur
      */
     _methods.addClassOnBlur = function() {
-        var className = _options.addClassOnBlur;
-        $inputs.on('blur', function() {
-            $(this).toggleClass(className);
-        });
+      $inputs.on({
+        blur: function() {
+          $(this).addClass(_options.addClassOnBlur);
+        }
+      });
     };
 
     /**
@@ -180,9 +176,10 @@
      * blurred :input field. Add data('remove_class_on_blur') class back on blur
      */
     _methods.removeClassOnBlur = function() {
-      var className = _options.removeClassOnBlur;
-      $inputs.on('blur', function() {
-        $(this).toggleClass(className);
+      $inputs.on({
+        blur: function() {
+          $(this).removeClass(_options.removeClassOnBlur);
+        }
       });
     };
 
