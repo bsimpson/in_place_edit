@@ -42,9 +42,9 @@
         submitOnClick: false,
         submitOnEnter: false,
         toggleActionsOnMouseover: false,
-        toggleLabelOnBlur: false,
-        toggleLabelOnClick: false,
-        toggleLabelOnEnter: false
+        showLabelOnBlur: false,
+        showLabelOnEnter: false,
+        showFormOnClick: false
       };
     _options = $.extend(_options, options);
     formData = $form.serializeArray();
@@ -192,7 +192,7 @@
      * display_label. Elements with a class of .no_toggle will be excluded
      * from this event
      */
-    _methods.toggleLabelOnClick = function() {
+    _methods.showFormOnClick = function() {
       $this.find('.display_label').on('click', function(evt) {
         if ( !$(evt.target).hasClass('no_toggle') ) {
           $(this).parents('.display_label').hide();
@@ -203,11 +203,11 @@
     };
 
     /**
-     * @description Inverse of toggleLabelOnClick - returns to display label
+     * @description Inverse of showFormOnClick - returns to display label
      * when form elements blur for longer than 1s. Requires the label element
      * to have the class display_label
      */
-    _methods.toggleLabelOnBlur = function() {
+    _methods.showLabelOnBlur = function() {
       $inputs.on({
         blur: function() {
           var blurFunction,
@@ -228,10 +228,10 @@
     };
 
     /**
-     * @description Similar to toggleLabelOnBlur, watching for the enter key to
+     * @description Similar to showLabelOnBlur, watching for the enter key to
      * be pressed in a field instead
      */
-    _methods.toggleLabelOnEnter = function() {
+    _methods.showLabelOnEnter = function() {
       $inputs.on({
         focus: function() {
           formData = $form.serializeArray();
@@ -371,7 +371,7 @@
           // container
           _methods[_curMethod].call(this);
         } else {
-          throw new Error('Option undefined.');
+          throw new Error('Option undefined:' + _curMethod);
         }
       }
     }

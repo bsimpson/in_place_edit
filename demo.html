@@ -146,9 +146,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
     </ul>
     <h3>Label display</h3>
     <ul>
-      <li><a href="#toggle_label_on_click">Toggle label on click</a></li>
-      <li><a href="#toggle_label_on_blur">Toggle label on blur</a></li>
-      <li><a href="#toggle_label_on_enter">Toggle label on enter</a></li>
+      <li><a href="#show_form_on_click">Show form on click</a></li>
+      <li><a href="#show_label_on_blur">Show label on blur</a></li>
+      <li><a href="#show_label_on_enter">Show label on enter</a></li>
       <li><a href="#focus_respective_inputs">Focus respective inputs</a></li>
     </ul>
     <h3>Other controls</h3>
@@ -268,11 +268,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
         <input type="text" name="foo" value="foo" class="red_border" />
       </form>
     </div>
-    <h2><a name="toggle_label_on_click">Toggle Label on Click</a></h2>
+    <h2><a name="show_form_on_click">Show Form on Click</a></h2>
     <p>
       When a display label is clicked, switch to an alternate view containing the form. Requires the label element to have the class display_label. Elements with a class of .no_toggle will be excluded from this event.
     </p>
-    <div class="in_place_edit" data-in-place-data="toggleLabelOnClick">
+    <div class="in_place_edit" data-in-place-data="showFormOnClick">
       <form action="#" method="post" class="demo_form" style="display:none">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -280,11 +280,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
         <h4>Click me to toggle the form</h4>
       </div>
     </div>
-    <h2><a name="toggle_label_on_blur">Toggle Label on Blur</a></h2>
+    <h2><a name="show_label_on_blur">Show Label on Blur</a></h2>
     <p>
-      Inverse of 'Toggle Label On Click' - returns to display label when form elements blur for longer than 1s. Requires the label element to have the class 'display_label'
+      Inverse of 'Show Form On Click' - returns to display label when form elements blur for longer than 1s. Requires the label element to have the class 'display_label'
     </p>
-    <div class="in_place_edit" data-in-place-data="toggleLabelOnBlur">
+    <div class="in_place_edit" data-in-place-data="showLabelOnBlur">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -292,11 +292,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
         <h4>Now you see the display label</h4>
       </div>
     </div>
-    <h2><a name="toggle_label_on_enter">Toggle Label on Enter</a></h2>
+    <h2><a name="show_label_on_enter">Show Label on Enter</a></h2>
     <p>
-      Similar to 'Toggle Label On Blur', watching for the enter key to be pressed in a field instead
+      Similar to 'Show Label On Blur', watching for the enter key to be pressed in a field instead
     </p>
-    <div class="in_place_edit" data-in-place-data="toggleLabelOnEnter">
+    <div class="in_place_edit" data-in-place-data="showLabelOnEnter">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -411,7 +411,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 
     <div id="demo_2">
       <h2>Display label with multiple clickable areas</h2>
-      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit toggleLabelOnBlur toggleLabelOnEnter toggleLabelOnClick focusRespectiveInputs">
+      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit showLabelOnBlur showLabelOnEnter showFormOnClick focusRespectiveInputs">
         <form action="#" method="post" class="demo_form" style="display: none">
           <input type="text" name="first" value="Benjamin" id="demo_2_first" />
           <input type="text" name="middle" value="Lee" id="demo_2_middle" />
@@ -436,7 +436,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 
     <div id="demo_3">
       <h2>Edit an active hyperlink</h2>
-      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit toggleLabelOnEnter toggleLabelOnBlur toggleActionsOnMouseover toggleLabelOnClick focusRespectiveInputs">
+      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit showLabelOnEnter showLabelOnBlur toggleActionsOnMouseover showFormOnClick focusRespectiveInputs">
         <form action="#" method="post" class="demo_form" style="display: none">
           <input type="text" name="link" value="http://www.reddit.com" id="demo_3_link" />
         </form>
