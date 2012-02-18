@@ -59,8 +59,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
         padding: 10px;
       }
 
-      .red_border {
-        border: 1px solid red;
+      .red_background {
+        background-color: #FFCCCC;
       }
 
       .hint {
@@ -115,7 +115,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
     </p>
 
     <pre>
-      &lt;div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_border"&gt;
+      &lt;div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_background"&gt;
         &lt;form action="#" method="post"&gt;
           &lt;input type="text" name="foo" value="foo" /&gt;
         &lt;/form&gt;
@@ -222,7 +222,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <dt>data-add-class-on-focus</dt>
       <dd>The class to add</dd>
     </dl>
-    <div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_border">
+    <div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_background">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -236,9 +236,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <dt>data-remove-class-on-focus</dt>
       <dd>The class to remove</dd>
     </dl>
-    <div class="in_place_edit" data-in-place-data="removeClassOnFocus" data-remove-class-on-focus="red_border">
+    <div class="in_place_edit" data-in-place-data="removeClassOnFocus" data-remove-class-on-focus="red_background">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" class="red_border" />
+        <input type="text" name="foo" value="foo" class="red_background" />
       </form>
     </div>
     <h2><a name="add_class_on_blur">Add Class on Blur</a></h2>
@@ -250,7 +250,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <dt>data-add-class-on-blur</dt>
       <dd>The class to add</dd>
     </dl>
-    <div class="in_place_edit" data-in-place-data="addClassOnBlur" data-add-class-on-blur="red_border">
+    <div class="in_place_edit" data-in-place-data="addClassOnBlur" data-add-class-on-blur="red_background">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -264,9 +264,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <dt>data-remove-class-on-blur</dt>
       <dd>The class to remove</dd>
     </dl>
-    <div class="in_place_edit" data-in-place-data="removeClassOnBlur" data-remove-class-on-blur="red_border">
+    <div class="in_place_edit" data-in-place-data="removeClassOnBlur" data-remove-class-on-blur="red_background">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" class="red_border" />
+        <input type="text" name="foo" value="foo" class="red_background" />
       </form>
     </div>
     <h2><a name="show_form_on_click">Show Form on Click</a></h2>
@@ -346,7 +346,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <dt>data-add-class-on-submit</dt>
       <dd>The class to add</dd>
     </dl>
-    <div class="in_place_edit" data-in-place-data="addClassOnSubmit" data-add-class-on-submit="red_border">
+    <div class="in_place_edit" data-in-place-data="addClassOnSubmit" data-add-class-on-submit="red_background">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
       </form>
@@ -403,7 +403,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 
     <div id="demo_1">
       <h2>Basic in place edit</h2>
-      <div class="in_place_edit" data-in-place-data="submitOnBlur submitOnEnter addClassOnFocus" data-add-class-on-focus="red_border">
+      <div class="in_place_edit" data-in-place-data="submitOnBlur submitOnEnter addClassOnFocus" data-add-class-on-focus="red_background">
         <form action="#" method="post" class="demo_form">
           <div>Field 1</div>
           <input type="text" name="foo" value="foo" />
