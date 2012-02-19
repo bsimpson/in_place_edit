@@ -37,13 +37,15 @@
         removeClassOnFocus: $form.data('removeClassOnFocus'),
         submitOnAutocompleteSelect: false,
         submitOnBlur: false,
-        submitOnBlurNoDelay: false,
         submitOnClick: false,
         submitOnEnter: false,
         toggleActionsOnMouseover: false,
         showLabelOnBlur: false,
+        hideFormOnBlur: false,
         showLabelOnEnter: false,
-        showFormOnClick: false
+        hideFormOnEnter: false,
+        showFormOnClick: false,
+        hideLabelOnClick: false
       };
     _options = $.extend(_options, options);
     formData = $form.serializeArray();
@@ -200,6 +202,15 @@
     };
 
     /**
+     * @description When a display label is clicked, hide the label
+     */
+    _methods.hideLabelOnClick = function() {
+      $this.find('.display_label').on('click', function(evt) {
+        $(this).hide();
+      });
+    };
+
+    /**
      * @description Inverse of showFormOnClick - returns to display label
      * when form elements blur for longer than 1s. Requires the label element
      * to have the class display_label
@@ -211,11 +222,32 @@
               timer;
 
           blurFunction = function() {
-            $inputs.find('.display_label').show();
-            $form.hide();
+            $this.find('.display_label').show();
           };
 
-          timer = setTimeout(blurFunction, 1000);
+          timer = setTimeout(blurFunction, 100);
+          $form.data('labelTimer', timer);
+        },
+        focus: function() {
+          clearTimeout($form.data('labelTimer'));
+        }
+      });
+    };
+
+    /**
+     * @description Hide the form on blur
+     */
+    _methods.hideFormOnBlur = function() {
+      $inputs.on({
+        blur: function() {
+          var blurFunction,
+              timer;
+
+          blurFunction = function() {
+            $form.hide()
+          };
+
+          timer = setTimeout(blurFunction, 100);
           $form.data('labelTimer', timer);
         },
         focus: function() {
@@ -239,6 +271,21 @@
           if (code === 13) {
             evt.preventDefault();
             $this.find('.display_label').show();
+          }
+        }
+      });
+    };
+
+    /**
+     * @description Hide the form when enter is pressed
+     */
+    _methods.hideFormOnEnter = function() {
+      $inputs.on({
+        keypress: function(evt) {
+          var code = evt.keyCode || evt.which;
+
+          if (code === 13) {
+            evt.preventDefault();
             $form.hide();
           }
         }
