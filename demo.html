@@ -132,7 +132,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 
     <h3>Submit control</h3>
     <ul>
-      <li><a href="#submit_on_blur_no_delay">Submit on blur (one field)</a></li>
+      <li><a href="#submit_on_blur_one">Submit on blur (one field)</a></li>
       <li><a href="#submit_on_blur">Submit on blur (multiple fields)</a></li>
       <li><a href="#submit_on_click">Submit on click</a></li>
       <li><a href="#submit_on_enter">Submit on enter</a></li>
@@ -146,11 +146,14 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <li><a href="#remove_class_on_blur">Remove class on blur</a></li>
       <li><a href="#add_class_on_submit">Add class on submit</a></li>
     </ul>
-    <h3>Label display</h3>
+    <h3>Label manipulation</h3>
     <ul>
       <li><a href="#show_form_on_click">Show form on click</a></li>
+      <li><a href="#hide_label_on_click">Hide label on click</a></li>
       <li><a href="#show_label_on_blur">Show label on blur</a></li>
+      <li><a href="#hide_form_on_blur">Hide form on blur</a></li>
       <li><a href="#show_label_on_enter">Show label on enter</a></li>
+      <li><a href="#hide_form_on_enter">Hide form on enter</a></li>
       <li><a href="#focus_respective_inputs">Focus respective inputs</a></li>
     </ul>
     <h3>Other controls</h3>
@@ -162,11 +165,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
     </ul>
 
 
-    <h2><a name="submit_on_blur_no_delay">Submit on Blur (one field)</a></h2>
+    <h2><a name="submit_on_blur_one">Submit on Blur (one field)</a></h2>
     <p>
       Submitting a form after a field loses focus is the basic functionality of edit in place.
     <p>
-    <div class="in_place_edit" data-in-place-data="submitOnBlurNoDelay">
+    <div class="in_place_edit" data-in-place-data="submitOnBlur">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
         <span class="hint">Note: The value must change for the form to submit</span>
@@ -282,6 +285,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
         <h4>Click me to show the form</h4>
       </div>
     </div>
+    <h2><a name="hide_label_on_click">Hide label on Click</a></h2>
+    <p>
+      When a display label is clicked, hide it
+    </p>
+    <div class="in_place_edit" data-in-place-data="hideLabelOnClick">
+      <div class="display_label">
+        <h4>Click me to hide</h4>
+      </div>
+    </div>
     <h2><a name="show_label_on_blur">Show Label on Blur</a></h2>
     <p>
       Inverse of 'Show Form On Click' - returns to display label when form elements blur for longer than 1s. Requires the label element to have the class 'display_label'
@@ -293,6 +305,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <div class="display_label" style="display: none">
         <h4>Now you see the display label</h4>
       </div>
+    </div>
+    <h2><a name="hide_form_on_blur">Hide form on Blur</a></h2>
+    <p>
+      When a form loses focus, hide it
+    </p>
+    <div class="in_place_edit" data-in-place-data="hideFormOnBlur">
+      <form action="#" method="post" class="demo_form">
+        <input type="text" name="foo" value="foo" />
+      </form>
     </div>
     <h2><a name="show_label_on_enter">Show Label on Enter</a></h2>
     <p>
@@ -307,6 +328,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
           Now you see the display label
         </h4>
       </div>
+    </div>
+    <h2><a name="hide_form_on_enter">Hide form on Enter</a></h2>
+    <p>
+      When enter is pressed inside a form, hide that form
+    </p>
+    <div class="in_place_edit" data-in-place-data="hideFormOnEnter">
+      <form action="#" method="post" class="demo_form">
+        <input type="text" name="foo" value="foo" />
+      </form>
     </div>
     <h2><a name="focus_respective_inputs">Focus Respective Inputs</a></h2>
     <p>
@@ -361,6 +391,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
     <div class="in_place_edit" data-in-place-data="blurOnSubmit">
       <form action="#" method="post" class="demo_form">
         <input type="text" name="foo" value="foo" />
+        <span class="hint">Note: The focus leaves the field after submit is fired</span>
       </form>
     </div>
     <h2><a name="blur_on_autocomplete_select">Blur on Autocomplete Select</a></h2>
@@ -386,9 +417,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       Toggle a DOM element with class "display_label" on mouseover/out
     </p>
     <div class="in_place_edit" data-in-place-data="toggleActionsOnMouseover">
-      <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
-      </form>
+      <span class="hint">Note: Move the mouse over 'Mouseover me to toggle controls' to see controls</span>
       <div class="display_label">
         <h3>
           Mouseover me to toggle controls
@@ -405,8 +434,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
     </p>
 
     <div id="demo_1">
-      <h2>Basic in place edit</h2>
-      <div class="in_place_edit" data-in-place-data="submitOnBlur submitOnEnter addClassOnFocus" data-add-class-on-focus="red_background">
+      <h2>Basic In Place Edit</h2>
+      <div class="in_place_edit" data-in-place-data="submitOnBlur submitOnEnter addClassOnFocus removeClassOnBlur" data-add-class-on-focus="red_background" data-remove-class-on-blur="red_background">
         <form action="#" method="post" class="demo_form">
           <div>Field 1</div>
           <input type="text" name="foo" value="foo" />
@@ -417,8 +446,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 
     <div id="demo_2">
       <h2>Display label with multiple clickable areas</h2>
-      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit showLabelOnBlur showLabelOnEnter showFormOnClick focusRespectiveInputs">
-        <form action="#" method="post" class="demo_form" style="display: none">
+      <div class="in_place_edit" data-in-place-data="focusRespectiveInputs hideLabelOnClick showFormOnClick showLabelOnBlur hideFormOnBlur showLabelOnEnter hideFormOnEnter">
+        <form action="#" method="post" class="demo_form">
           <input type="text" name="first" value="Benjamin" id="demo_2_first" />
           <input type="text" name="middle" value="Lee" id="demo_2_middle" />
           <input type="text" name="last" value="Simpson" id="demo_2_last" />
@@ -432,8 +461,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       <script type="text/javascript">
         $(function() {
           $(['first','middle','last']).each(function(_, x) {
-            $('#demo_2_' + x, '#demo_2').bind('blur', function() {
-              $('span[data-in-place-focus-element="#demo_2_' + x + '"]').html($(this).val());
+            $('#demo_2_' + x, '#demo_2').bind('change', function() {
+              $('strong[data-in-place-focus-element="#demo_2_' + x + '"]', '#demo_2').html($(this).val());
             });
           });
         });
@@ -441,8 +470,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
    </div>
 
     <div id="demo_3">
-      <h2>Edit an active hyperlink</h2>
-      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit showLabelOnEnter showLabelOnBlur toggleActionsOnMouseover showFormOnClick focusRespectiveInputs">
+      <h2>Edit an Active Hyperlink</h2>
+      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit showLabelOnEnter hideFormOnEnter showLabelOnBlur hideFormOnBlur toggleActionsOnMouseover showFormOnClick hideLabelOnClick focusRespectiveInputs">
         <form action="#" method="post" class="demo_form" style="display: none">
           <input type="text" name="link" value="http://www.reddit.com" id="demo_3_link" />
         </form>
