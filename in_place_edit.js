@@ -90,18 +90,6 @@
     };
 
     /**
-     * @description Submit form when focus leaves the input field
-     *   Suitable for an in_place_edit containing only one :input element
-     */
-    _methods.submitOnBlurNoDelay = function() {
-      $inputs.on('blur', function() {
-        var currentData = $form.serializeArray();
-        formData = (formData === currentData) ? formData : currentData;
-        $form.trigger('submit');
-      });
-    };
-
-    /**
      * @description Submit form when an element (ie check box) is clicked
      *   Suitable for an in_place_edit containing check boxes
      */
