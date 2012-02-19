@@ -256,9 +256,11 @@
       $this.find('.display_label *').on('click', function() {
         var $clickedLabel = $(this);
         if ($clickedLabel.data('inPlaceFocusElement')) {
+          setTimeout(function() {
           $this
             .find($clickedLabel.data('inPlaceFocusElement'))
             .trigger('focus');
+          }, 10);
         } else {
           $this.find(':text:first, :text.initial_focus').trigger('focus');
         }
