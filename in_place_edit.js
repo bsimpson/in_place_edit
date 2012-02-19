@@ -61,13 +61,13 @@
         blur: function() {
           var blurFunction = function() {
             var currentData = $form.serializeArray();
-            formData = (formData === currentData) ? formData : currentData;
-
-            $form.trigger('submit');
+            if (JSON.stringify(formData) != JSON.stringify(currentData)) {
+              $form.trigger('submit');
+            }
           },
           timer;
 
-          timer = setTimeout(blurFunction, 1000);
+          timer = setTimeout(blurFunction, 100);
           $form.data('timer', timer);
         },
         focus: function() {
@@ -128,8 +128,10 @@
           if (code === 13) {
             evt.preventDefault();
             currentData = $form.serializeArray();
-            formData = (formData === currentData) ? formData : currentData;
-            $form.trigger('submit');
+            if (JSON.stringify(formData) != JSON.stringify(currentData)) {
+              $form.trigger('submit');
+            }
+            formData = currentData;
           }
         }
       });
@@ -383,17 +385,18 @@
      * @description Submit the form when selecting an autocomplete option
      */
     _methods.submitOnAutocompleteSelect = function() {
-      $this.find('.ui-autocomplete-input').on(
-        'autocompleteselect',
-        function(evt, ui) {
-          var $clickedInput = $(this);
-          $clickedInput.val(ui.item.label);
-          // TODO: Where is 'id_element' defined? I don't see it in the
-          // demo.html markup ~ JBS
-          $($clickedInput.attr('id_element')).val(ui.item.id);
-          $clickedInput.parents('form').trigger('submit');
+      var form = $this.find('form');
+      $this.find('.ui-autocomplete-input').on({
+        autocompleteselect: function(evt, ui) {
+          $(this).val(ui.item.value);
+          if (JSON.stringify(formData) != JSON.stringify($form.serializeArray())) {
+            $form.trigger('submit');
+          }
+        },
+        focus: function() {
+          formData = $form.serializeArray();
         }
-      );
+      });
     };
 
     // Loop through the given plugin options and bind them
