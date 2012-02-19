@@ -447,7 +447,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
     <div id="demo_2">
       <h2>Display label with multiple clickable areas</h2>
       <div class="in_place_edit" data-in-place-data="focusRespectiveInputs hideLabelOnClick showFormOnClick showLabelOnBlur hideFormOnBlur showLabelOnEnter hideFormOnEnter">
-        <form action="#" method="post" class="demo_form">
+        <form action="#" method="post" class="demo_form" style="display: none">
           <input type="text" name="first" value="Benjamin" id="demo_2_first" />
           <input type="text" name="middle" value="Lee" id="demo_2_middle" />
           <input type="text" name="last" value="Simpson" id="demo_2_last" />
@@ -471,7 +471,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 
     <div id="demo_3">
       <h2>Edit an Active Hyperlink</h2>
-      <div class="in_place_edit" data-in-place-data="submitOnEnter submitOnBlur blurOnSubmit showLabelOnEnter hideFormOnEnter showLabelOnBlur hideFormOnBlur toggleActionsOnMouseover showFormOnClick hideLabelOnClick focusRespectiveInputs">
+      <div class="in_place_edit" data-in-place-data="toggleActionsOnMouseover focusRespectiveInputs showFormOnClick hideLabelOnClick hideFormOnBlur showLabelOnBlur">
         <form action="#" method="post" class="demo_form" style="display: none">
           <input type="text" name="link" value="http://www.reddit.com" id="demo_3_link" />
         </form>
@@ -484,7 +484,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
       </div>
       <script type="text/javascript">
         $(function() {
-          $('#demo_3_link', '#demo_3').bind('blur', function() {
+          $('#demo_3_link', '#demo_3').bind('change', function() {
             $('.display_label a', '#demo_3').attr('href', $(this).val()).html($(this).val());
           });
         });
