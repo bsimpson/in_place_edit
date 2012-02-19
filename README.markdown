@@ -42,38 +42,33 @@ be added by supplying the data-add-class-on-focus attribute.
 
 # Options
 
-Below is an index of available options. Click a link to see a demo of that
-option. Further examples are at the bottom.
+Below is an index of available options. More information is available
+in the demo for each option
 
 ## Index
 
 ### Submit control
-
   * Submit on blur (one field)
   * Submit on blur (multiple fields)
   * Submit on click
   * Submit on enter
   * Submit on autocomplete select
-
 ### Class manipulation
-
   * Add class on focus
   * Remove class on focus
   * Add class on blur
   * Remove class on blur
   * Add class on submit
-
-### Label display
-
-  * Toggle label on click
-  * Toggle label on blur
-  * Toggle label on enter
+### Label manipulation
+  * Show form on click
+  * Hide label on click
+  * Show label on blur
+  * Hide form on blur
+  * Show label on enter
+  * Hide form on enter
   * Focus respective inputs
-
-### Other controls
-
+###Other controls
   * Blur on submit
   * Blur on autocomplete select
   * Disable inputs on submit
   * Toggle actions on mouseover
-
