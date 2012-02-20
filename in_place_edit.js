@@ -1,3 +1,4 @@
+/*global JSON:false */
 /**
 *
 * @fileOverview In place edit allows HTML inputs to submit to the server without the need
@@ -61,7 +62,7 @@
         blur: function() {
           var blurFunction = function() {
             var currentData = $form.serializeArray();
-            if (JSON.stringify(formData) != JSON.stringify(currentData)) {
+            if (JSON.stringify(formData) !== JSON.stringify(currentData)) {
               $form.trigger('submit');
             }
           },
@@ -116,7 +117,7 @@
           if (code === 13) {
             evt.preventDefault();
             currentData = $form.serializeArray();
-            if (JSON.stringify(formData) != JSON.stringify(currentData)) {
+            if (JSON.stringify(formData) !== JSON.stringify(currentData)) {
               $form.trigger('submit');
             }
             formData = currentData;
@@ -234,7 +235,7 @@
               timer;
 
           blurFunction = function() {
-            $form.hide()
+            $form.hide();
           };
 
           timer = setTimeout(blurFunction, 100);
@@ -377,7 +378,7 @@
       $this.find('.ui-autocomplete-input').on({
         autocompleteselect: function(evt, ui) {
           $(this).val(ui.item.value);
-          if (JSON.stringify(formData) != JSON.stringify($form.serializeArray())) {
+          if (JSON.stringify(formData) !== JSON.stringify($form.serializeArray())) {
             $form.trigger('submit');
           }
         },
