@@ -1,16 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html>
   <head>
+  	<meta charset="utf-8">
     <title>Demo for In Place Edit</title>
-    <script type="text/javascript" src="https://github.com/douglascrockford/JSON-js/raw/master/json2.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
-    <script type="text/javascript" src="https://raw.github.com/bsimpson/in_place_edit/master/in_place_edit.js"></script>
-    <script type="text/javascript" src="in_place_edit.js"></script>
-    <script type="text/javascript">
+    <script src="https://github.com/douglascrockford/JSON-js/raw/master/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+    <script src="https://raw.github.com/bsimpson/in_place_edit/master/in_place_edit.js"></script>
+    <script src="in_place_edit.js"></script>
+    <script>
       $(function() {
         $('.demo_form').bind('submit', function(evt) {
           evt.preventDefault();
@@ -50,7 +49,7 @@
       });
     </script>
 
-    <style type="text/css">
+    <style>
       .red_background {
         background-color: #FFCCCC;
       }
@@ -99,7 +98,7 @@
     <pre>
       &lt;div class="in_place_edit" data-in-place-data="submitOnBlur"&gt;
         &lt;form action="#" method="post"&gt;
-          &lt;input type="text" name="foo" value="foo" /&gt;
+          &lt;input name="foo" value="foo" /&gt;
         &lt;/form&gt;
       &lt;/div&gt;
     </pre>
@@ -115,7 +114,7 @@
     <pre>
       &lt;div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_background"&gt;
         &lt;form action="#" method="post"&gt;
-          &lt;input type="text" name="foo" value="foo" /&gt;
+          &lt;input name="foo" value="foo" /&gt;
         &lt;/form&gt;
       &lt;/div&gt;
     </pre>
@@ -168,7 +167,7 @@
     <p>
     <div class="in_place_edit" data-in-place-data="submitOnBlur">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
         <span class="hint">Note: The value must change for the form to submit</span>
       </form>
     </div>
@@ -179,9 +178,9 @@
     <div class="in_place_edit" data-in-place-data="submitOnBlur">
       <form action="#" method="post" class="demo_form">
         <div>Field 1</div>
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
         <div>Field 2</div>
-        <input type="text" name="bar" value="bar" />
+        <input name="bar" value="bar">
         <span class="hint">Note: At least one value must change for the form to submit</span>
       </form>
     </div>
@@ -191,7 +190,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="submitOnClick">
       <form action="#" method="post" class="demo_form">
-        <input type="checkbox" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
     </div>
     <h2><a name="submit_on_enter">Submit on Enter</a></h2>
@@ -200,7 +199,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="submitOnEnter">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
         <span class="hint">Note: The value must change for the form to submit</span>
       </form>
     </div>
@@ -210,7 +209,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="submitOnAutocompleteSelect">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" class="autocomplete" />
+        <input name="foo" value="foo" class="autocomplete">
         <span class="hint">Note: Type the letter 'A' in the field to show results</span>
       </form>
     </div>
@@ -225,7 +224,7 @@
     </dl>
     <div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_background">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
     </div>
     <h2><a name="remove_class_on_focus">Remove Class on Focus</a></h2>
@@ -239,7 +238,7 @@
     </dl>
     <div class="in_place_edit" data-in-place-data="removeClassOnFocus" data-remove-class-on-focus="red_background">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" class="red_background" />
+        <input name="foo" value="foo" class="red_background">
       </form>
     </div>
     <h2><a name="add_class_on_blur">Add Class on Blur</a></h2>
@@ -253,7 +252,7 @@
     </dl>
     <div class="in_place_edit" data-in-place-data="addClassOnBlur" data-add-class-on-blur="red_background">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
     </div>
     <h2><a name="remove_class_on_blur">Remove Class on Blur</a></h2>
@@ -267,7 +266,7 @@
     </dl>
     <div class="in_place_edit" data-in-place-data="removeClassOnBlur" data-remove-class-on-blur="red_background">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" class="red_background" />
+        <input name="foo" value="foo" class="red_background">
       </form>
     </div>
     <h2><a name="show_form_on_click">Show Form on Click</a></h2>
@@ -276,7 +275,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="showFormOnClick">
       <form action="#" method="post" class="demo_form" style="display:none">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
       <div class="display_label">
         <h4>Click me to show the form</h4>
@@ -297,7 +296,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="showLabelOnBlur">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
       <div class="display_label" style="display: none">
         <h4>Now you see the display label</h4>
@@ -309,7 +308,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="hideFormOnBlur">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
     </div>
     <h2><a name="show_label_on_enter">Show Label on Enter</a></h2>
@@ -318,7 +317,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="showLabelOnEnter">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
       <div class="display_label" style="display: none">
         <h4>
@@ -332,7 +331,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="hideFormOnEnter">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
     </div>
     <h2><a name="focus_respective_inputs">Focus Respective Inputs</a></h2>
@@ -348,15 +347,15 @@
       <form action="#" method="post" class="demo_form">
         <p>
           <label for="first">First name</label>
-          <input type="text" name="first" value="Benjamin" id="first" />
+          <input name="first" value="Benjamin" id="first">
         </p>
         <p>
           <label for="middle">Middle name</label>
-          <input type="text" name="middle" value="Lee" id="middle" />
+          <input name="middle" value="Lee" id="middle">
         </p>
         <p>
           <label for="last">Last name</label>
-          <input type="text" name="last" value="Simpson" id="last" />
+          <input name="last" value="Simpson" id="last">
         </p>
       </form>
       <div class="display_label">
@@ -378,7 +377,7 @@
     </dl>
     <div class="in_place_edit" data-in-place-data="addClassOnSubmit" data-add-class-on-submit="red_background">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
     </div>
     <h2><a name="blur_on_submit">Blur on Submit</a></h2>
@@ -387,7 +386,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="blurOnSubmit">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
         <span class="hint">Note: The focus leaves the field after submit is fired</span>
       </form>
     </div>
@@ -397,7 +396,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="blurOnAutocompleteSelect">
       <form action="#" method="post" class="demo_form">
-        <input type="text" name="foo" value="foo" class="autocomplete" />
+        <input name="foo" value="foo" class="autocomplete">
       </form>
     </div>
     <h2><a name="disable_inputs_on_submit">Disable Inputs on Submit</a></h2>
@@ -406,7 +405,7 @@
     </p>
     <div class="in_place_edit" data-in-place-data="disableInputsOnSubmit">
       <form action="#" method="post" class="demo_form" id="remote">
-        <input type="text" name="foo" value="foo" />
+        <input name="foo" value="foo">
       </form>
     </div>
     <h2><a name="toggle_actions_on_mouseover">Toggle Actions on Mouseover</a></h2>
@@ -435,7 +434,7 @@
       <div class="in_place_edit" data-in-place-data="submitOnBlur submitOnEnter addClassOnFocus removeClassOnBlur" data-add-class-on-focus="red_background" data-remove-class-on-blur="red_background">
         <form action="#" method="post" class="demo_form">
           <div>Field 1</div>
-          <input type="text" name="foo" value="foo" />
+          <input name="foo" value="foo">
           <span class="hint">Note: At least one value must change for the form to submit</span>
         </form>
       </div>
@@ -445,9 +444,9 @@
       <h2>Display label with multiple clickable areas</h2>
       <div class="in_place_edit" data-in-place-data="focusRespectiveInputs hideLabelOnClick showFormOnClick showLabelOnBlur hideFormOnBlur showLabelOnEnter hideFormOnEnter">
         <form action="#" method="post" class="demo_form" style="display: none">
-          <input type="text" name="first" value="Benjamin" id="demo_2_first" />
-          <input type="text" name="middle" value="Lee" id="demo_2_middle" />
-          <input type="text" name="last" value="Simpson" id="demo_2_last" />
+          <input name="first" value="Benjamin" id="demo_2_first">
+          <input name="middle" value="Lee" id="demo_2_middle">
+          <input name="last" value="Simpson" id="demo_2_last">
         </form>
         <div class="display_label">
           <strong data-in-place-focus-element="#demo_2_first">Benjamin</strong>
@@ -455,7 +454,7 @@
           <strong data-in-place-focus-element="#demo_2_last">Simpson</strong>
         </div>
       </div>
-      <script type="text/javascript">
+      <script>
         $(function() {
           $(['first','middle','last']).each(function(_, x) {
             $('#demo_2_' + x, '#demo_2').bind('change', function() {
@@ -470,7 +469,7 @@
       <h2>Edit an Active Hyperlink</h2>
       <div class="in_place_edit" data-in-place-data="toggleActionsOnMouseover focusRespectiveInputs showFormOnClick hideLabelOnClick hideFormOnBlur showLabelOnBlur">
         <form action="#" method="post" class="demo_form" style="display: none">
-          <input type="text" name="link" value="http://www.reddit.com" id="demo_3_link" />
+          <input name="link" value="http://www.reddit.com" id="demo_3_link">
         </form>
         <div class="display_label">
           <a href="http://www.reddit.com">http://www.reddit.com</a>
@@ -479,7 +478,7 @@
           </span>
         </div>
       </div>
-      <script type="text/javascript">
+      <script>
         $(function() {
           $('#demo_3_link', '#demo_3').bind('change', function() {
             $('.display_label a', '#demo_3').attr('href', $(this).val()).html($(this).val());
