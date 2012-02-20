@@ -1,0 +1,32 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "in_place_edit Build",
+			"cmd": ["./build.sh"],
+			"working_dir": "${project_path:${folder}}"
+		}
+	],
+	"settings":
+	{
+		"jshint_options":
+		{
+			"curly": true,
+			"devel": true,
+			"eqeqeq": true,
+			"immed": true,
+			"jquery": true,
+			"regexdash": true,
+			"browser": true,
+			"smarttabs": true,
+			"sub": true,
+			"undef": true
+		}
+	}
+}
