@@ -12,29 +12,29 @@ choose exactly how you want each form to operate.
 
 
 
-          <div class="in_place_edit" data-in-place-data="submitOnBlur">
-            <form action="#" method="post">
-              <input type="text" name="foo" value="foo" />
-            </form>
-          </div>
+    <div class="in_place_edit" data-in-place-data="submitOnBlur">
+      <form action="#" method="post">
+        <input type="text" name="foo" value="foo" />
+      </form>
+    </div>
 
 
-We wrap our form inside of a container named in_place_edit. This is the CSS
-selector we pass to jQuery when calling $.inPlaceEdit(). Options are
+We wrap our form inside of a container named `in_place_edit`. This is the CSS
+selector we pass to jQuery when calling `$.inPlaceEdit()`. Options are
 placed inside of data-in-place-data on the same object. These options are then
 wired up to the form via UJS.
 
 Some actions require further options to be specified, as is the case with 'Add
 class on focus'. In this action, we need to specify a value for the class to
-be added by supplying the data-add-class-on-focus attribute.
+be added by supplying the `data-add-class-on-focus` attribute.
 
 
 
-          <div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_border">
-            <form action="#" method="post">
-              <input type="text" name="foo" value="foo" />
-            </form>
-          </div>
+    <div class="in_place_edit" data-in-place-data="addClassOnFocus" data-add-class-on-focus="red_border">
+      <form action="#" method="post">
+        <input type="text" name="foo" value="foo" />
+      </form>
+    </div>
 
 # View the Demo
 
@@ -45,21 +45,24 @@ be added by supplying the data-add-class-on-focus attribute.
 Below is an index of available options. More information is available
 in the demo for each option
 
-## Index
+## Submit control
 
-### Submit control
   * Submit on blur (one field)
   * Submit on blur (multiple fields)
   * Submit on click
   * Submit on enter
   * Submit on autocomplete select
-### Class manipulation
+
+## Class manipulation
+
   * Add class on focus
   * Remove class on focus
   * Add class on blur
   * Remove class on blur
   * Add class on submit
-### Label manipulation
+
+## Label manipulation
+
   * Show form on click
   * Hide label on click
   * Show label on blur
@@ -67,7 +70,9 @@ in the demo for each option
   * Show label on enter
   * Hide form on enter
   * Focus respective inputs
-###Other controls
+
+## Other controls
+
   * Blur on submit
   * Blur on autocomplete select
   * Disable inputs on submit
