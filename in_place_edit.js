@@ -373,7 +373,6 @@
      * @description Submit the form when selecting an autocomplete option
      */
     _methods.submitOnAutocompleteSelect = function() {
-      var form = $this.find('form');
       $this.find('.ui-autocomplete-input').on({
         autocompleteselect: function(evt, ui) {
           $(this).val(ui.item.value);
