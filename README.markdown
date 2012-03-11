@@ -77,3 +77,9 @@ in the demo for each option
   * Blur on autocomplete select
   * Disable inputs on submit
   * Toggle actions on mouseover
+
+# Minify the Javascript
+
+[jsumners](https://github.com/jsumners) has provided a build system to minify this code for inclusion into production environments. To minify, simply run the command `./build.sh` from the project root. This will output the minified version at `src/in_place_edit.min.js`.
+
+Note: This requires `npm` to be installed, along with the `uglify-js` package. Information on `npm` can be found at [http://npmjs.org/](http://npmjs.org/)
